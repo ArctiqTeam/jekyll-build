@@ -1,3 +1,3 @@
 #!/bin/sh
 echo 'HTML Validation'
-htmlproofer
+sh -c "htmlproofer $*"
