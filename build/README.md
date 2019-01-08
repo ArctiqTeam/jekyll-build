@@ -9,15 +9,12 @@ None needed
 ## Examples
 
 ```hcl
-workflow "Build Site" {
+workflow "Example" {
   on = "push"
   resolves = ["Build Jekyll"]
 }
 
 action "Build Jekyll" {
   uses = "ArctiqTeam/jekyll-ci/build@master"
-  secrets = [""]
 }
 ```
-
-Clones the repo and builds the site—that's it.

@@ -1,6 +1,6 @@
-# A GitHub Action for Building Jekyll Sites
+# A GitHub Action for Validating Static Sites
 
-GitHub Action for Building Jekyll for Validation Purposes
+GitHub Action for Validating sites built with Jekyll
 
 ## Secrets
 
@@ -9,15 +9,13 @@ None needed
 ## Examples
 
 ```hcl
-workflow "Build Site" {
+workflow "Example" {
   on = "push"
-  resolves = ["Build Jekyll"]
+  resolves = ["Validate Site"]
 }
 
-action "Build Jekyll" {
-  uses = "ArctiqTeam/jekyll-ci/build@master"
+action "Validate Site" {
+  uses = "ArctiqTeam/jekyll-ci/validatemaster"
   secrets = [""]
 }
 ```
-
-Clones the repo and builds the site—that's it.

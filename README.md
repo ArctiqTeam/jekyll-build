@@ -1,23 +1,8 @@
-# A GitHub Action for Building Jekyll Sites
+# A Collection of Custom GitHub Actions
 
-GitHub Action for Building Jekyll for Validation Purposes
+This repo contains a few helpful GitHub Actions as follows:
 
-## Secrets
-
-None needed
-
-## Examples
-
-```hcl
-workflow "Build Site" {
-  on = "push"
-  resolves = ["Build Jekyll"]
-}
-
-action "Build Jekyll" {
-  uses = "ArctiqTeam/jekyll-build@master"
-  secrets = [""]
-}
-```
-
-Clones the repo and builds the site—that's it.
+* build - A Jekyll Site builder action - Used to build a Jekyll site from the _site folder in the workspace
+* git_push - Commit and Push to Git - Using a GH secret, the code will commit any changes and push back to the repo cloned in the workspace
+* python - Python script executor - Used to run a Python script passed as an arg to the container
+* validate - HTML validator - Using a previously build _site directory with Jekyll, will run an HTML validation against it

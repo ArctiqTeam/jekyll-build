@@ -1,6 +1,6 @@
-# A GitHub Action for Building Jekyll Sites
+# A GitHub Action for Executing Python Scripts
 
-GitHub Action for Building Jekyll for Validation Purposes
+GitHub Action for executing arbitrary python scripts
 
 ## Secrets
 
@@ -9,15 +9,13 @@ None needed
 ## Examples
 
 ```hcl
-workflow "Build Site" {
+workflow "Example" {
   on = "push"
-  resolves = ["Build Jekyll"]
+  resolves = ["Run Script"]
 }
 
-action "Build Jekyll" {
-  uses = "ArctiqTeam/jekyll-ci/build@master"
-  secrets = [""]
+action "Run Script" {
+  uses = "ArctiqTeam/jekyll-ci/python@master"
+  args = "tag_generator.py"
 }
 ```
-
-Clones the repo and builds the site—that's it.

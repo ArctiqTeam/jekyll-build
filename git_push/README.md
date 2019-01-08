@@ -1,23 +1,22 @@
-# A GitHub Action for Building Jekyll Sites
+# A GitHub Action for Commit and Push to Git
 
-GitHub Action for Building Jekyll for Validation Purposes
+GitHub Action for Committing and Pushing changes back to the Git repo
 
 ## Secrets
 
-None needed
+GITHUB_TOKEN is required for repo permissions
 
 ## Examples
 
 ```hcl
-workflow "Build Site" {
+workflow "Example" {
   on = "push"
-  resolves = ["Build Jekyll"]
+  resolves = ["Git Push"]
 }
 
-action "Build Jekyll" {
-  uses = "ArctiqTeam/jekyll-ci/build@master"
-  secrets = [""]
+action "Git Push" {
+  uses = "ArctiqTeam/jekyll-ci/git_push@master"
+  secrets = ["GITHUB_TOKEN"]
+  args = "tag push"
 }
 ```
-
-Clones the repo and builds the site—that's it.
