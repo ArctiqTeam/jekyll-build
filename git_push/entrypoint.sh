@@ -5,8 +5,9 @@ git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
 git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
 git add *
 git commit -m "GitHub Action Push $*"
+git remote rm origin
+git remote add origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
 git remote -v
 env
-git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/ArctiqTeam/ArctiqTeam.github.io.git" ${GITHUB_REF}
-# git push origin ${BRANCH}
+git push origin ${BRANCH}
 echo 'SUCCESS!'
