@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+env
 BRANCH=$(sed 's/refs\/heads\///g' <<<"$GITHUB_REF")
 git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
 git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
