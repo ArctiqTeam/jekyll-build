@@ -9,5 +9,5 @@ git remote rm origin
 git remote add origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
 git remote -v
 env
-git push origin ${BRANCH}
+git push
 echo 'SUCCESS!'
