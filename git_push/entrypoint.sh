@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 set -e
-env
-BRANCH=$(sed 's/refs\/heads\///g' <<<"$GITHUB_REF")
-git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git config user.name "${GITHUB_ACTOR}"
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add *
 git commit -m "GitHub Action Push $*"
 git push origin ${BRANCH}
