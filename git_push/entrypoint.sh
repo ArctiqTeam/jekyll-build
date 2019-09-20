@@ -1,10 +1,24 @@
 #!/bin/sh
 set -e
 export BRANCH=$(git rev-parse --abbrev-ref HEAD)
-git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-git add *
-env
-git commit -m "GitHub Action Push $*"
-git push origin ${BRANCH}
+cat <<- EOF > $HOME/.netrc
+		machine github.com
+		login $GITHUB_ACTOR
+		password $GITHUB_TOKEN
+		machine api.github.com
+		login $GITHUB_ACTOR
+		password $GITHUB_TOKEN
+EOF
+chmod 600 $HOME/.netrc
+git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+git config user.name "$GITHUB_ACTOR"
+if ! git diff --quiet
+then
+    git add *
+    env
+    git commit -m "GitHub Action Push $*"
+    git push --set-upstream origin ${BRANCH}
+else 
+  echo "Working tree clean. Nothing to commit."
+fi
 echo 'SUCCESS!'
