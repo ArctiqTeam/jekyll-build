@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 export BRANCH=$(git rev-parse --abbrev-ref HEAD)
 cat <<- EOF > $HOME/.netrc
 		machine github.com
